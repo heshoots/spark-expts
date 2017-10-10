@@ -1,0 +1,7 @@
+version: '3'
+services:
+  spark-shell:
+    image:  p7hb/docker-spark
+    volumes:
+      - ./.ivy2:/root/.ivy2
+    command: spark-shell --packages datastax:spark-cassandra-connector:2.0.1-s_2.11 --conf spark.cassandra.connection.host=cassandra --master spark://spark-master:7077

@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cassandra-data:
+    image: quorauk/cass-data:java
+    ports:
+      - 9042:9042
+    volumes:
+      - ./cass-data/config.json:/usr/src/mymaven/config.json
+    command: java -jar build.jar

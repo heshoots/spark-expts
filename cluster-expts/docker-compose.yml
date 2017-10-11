@@ -1,7 +1,10 @@
 version: '3'
 services:
   spark-master:
-    image:  p7hb/docker-spark
+    #image:  p7hb/docker-spark
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.spark
     ports:
       - 4040:4040
       - 8080:8080
@@ -12,7 +15,10 @@ services:
     volumes:
       - ./.ivy2:/root/.ivy2
   spark-slave:
-    image:  p7hb/docker-spark
+    #image:  p7hb/docker-spark
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.spark
     command: bash -c "start-slave.sh spark://spark-master:7077 ; tail -f /usr/local/spark/logs/spark*"
     volumes:
       - ./.ivy2:/root/.ivy2
@@ -20,3 +26,12 @@ services:
     image: cassandra
     expose:
       - 9042
+  notebook:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.notebook
+    #image: jupyter/all-spark-notebook
+    ports:
+    - 8888:8888
+    volumes:
+    - ./notebooks:/home/jovyan

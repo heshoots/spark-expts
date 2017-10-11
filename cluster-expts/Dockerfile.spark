@@ -1,0 +1,17 @@
+FROM p7hb/docker-spark
+RUN apt-get update
+RUN apt-get install libmpdec2
+RUN wget https://github.com/chriskuehl/python3.6-debian-stretch/releases/download/v3.6.2-1-deb9u1/python3.6_3.6.2-1.deb9u1_amd64.deb
+RUN wget https://github.com/chriskuehl/python3.6-debian-stretch/releases/download/v3.6.2-1-deb9u1/libpython3.6-minimal_3.6.2-1.deb9u1_amd64.deb
+RUN wget https://github.com/chriskuehl/python3.6-debian-stretch/releases/download/v3.6.2-1-deb9u1/libpython3.6-stdlib_3.6.2-1.deb9u1_amd64.deb
+RUN wget https://github.com/chriskuehl/python3.6-debian-stretch/releases/download/v3.6.2-1-deb9u1/python3.6-minimal_3.6.2-1.deb9u1_amd64.deb
+RUN dpkg -i *.deb
+#RUN wget http://central.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.5/spark-cassandra-connector_2.11-2.0.5.jar
+#RUN mv spark-cassandra-connector_2.11-2.0.5.jar /usr/local/spark/jars
+#RUN wget http://central.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar
+#RUN mv jsr166e-1.1.0.jar /usr/local/spark/jars
+ENV PYSPARK_PYTHON python3.6
+ENV PYSPARK_DRIVER_PYTHON python3.6
+ENV SPARK_OPTS="--master spark://spark-master:7070 --packages datastax:spark-cassandra-connector:2.0.1-s_2.11"
+
+

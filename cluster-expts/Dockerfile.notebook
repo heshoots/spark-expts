@@ -1,0 +1,8 @@
+FROM jupyter/all-spark-notebook
+USER root
+RUN wget http://central.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.5/spark-cassandra-connector_2.11-2.0.5.jar
+RUN mv spark-cassandra-connector_2.11-2.0.5.jar /usr/local/spark/jars
+RUN wget http://central.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar
+RUN mv jsr166e-1.1.0.jar /usr/local/spark/jars
+CMD start-notebook.sh
+

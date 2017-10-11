@@ -23,9 +23,9 @@ object SparkPi {
     println(rdd.map(_.getInt("value")).sum)
     val df = spark.read.format("org.apache.spark.sql.cassandra")
     .options(Map(
-      "table" -> "kv",
-      "keyspace" -> "test")).load()
-    df.show
+      "table" -> "measures",
+      "keyspace" -> "dev")).load()
+    df.describe().show()
     sc.stop()
   }
 }

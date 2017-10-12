@@ -1,0 +1,10 @@
+*.sbt
+*.bash_history
+*.scala_history
+*.swp
+*.jar
+cluster-expts/notebooks/.*
+scala/project/
+scala/target/
+*.ivy2/
+

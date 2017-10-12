@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../kube-compose.yml
+    kompose.version: 1.3.0 (4f187a1)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: notebook
+  name: notebook
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: notebook
+    spec:
+      containers:
+      - image: quorauk/spark-notebook-cassandra
+        name: notebook
+        ports:
+        - containerPort: 8888
+        resources: {}
+        volumeMounts:
+      restartPolicy: Always
+status: {}

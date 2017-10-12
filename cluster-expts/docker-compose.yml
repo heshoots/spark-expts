@@ -4,7 +4,7 @@ services:
     #image:  p7hb/docker-spark
     build:
       context: ./
-      dockerfile: ./Dockerfile.spark
+      dockerfile: ./Dockerfiles/Dockerfile.spark
     ports:
       - 4040:4040
       - 8080:8080
@@ -18,7 +18,7 @@ services:
     #image:  p7hb/docker-spark
     build:
       context: ./
-      dockerfile: ./Dockerfile.spark
+      dockerfile: ./Dockerfiles/Dockerfile.spark
     command: bash -c "start-slave.sh spark://spark-master:7077 ; tail -f /usr/local/spark/logs/spark*"
     volumes:
       - ./.ivy2:/root/.ivy2
@@ -29,7 +29,7 @@ services:
   notebook:
     build:
       context: ./
-      dockerfile: ./Dockerfile.notebook
+      dockerfile: ./Dockerfiles/Dockerfile.notebook
     #image: jupyter/all-spark-notebook
     ports:
     - 8888:8888

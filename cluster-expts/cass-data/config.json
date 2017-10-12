@@ -1,8 +1,0 @@
-{
-  "replication": "CREATE KEYSPACE dev with REPLICATION={'class': 'SimpleStrategy', 'replication_factor': 2}",
-  "rows": "30000",
-  "threads": "16",
-  "stations": "16",
-  "hostnames": ["cassandra"]
-}
-
